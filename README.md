@@ -23,6 +23,6 @@ To run the snake game, follow these steps:
 4. Run the following command to compile and execute the game:
    _go run main.go_
 
-5. Once the game starts, you can use the arrow keys to control the movement of the snake. Try to eat as much food as possible without colliding with the walls or the snake itself!
+5. Once the game starts, you can use the arrow keys to control the movement of the snake. Try to eat as much food as possible without colliding with the snake itself!
 
 Enjoy playing the snake game and exploring the basics of Go programming language!
