@@ -18,7 +18,7 @@ func main()  {
 
 	defStyle := tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite);
 	screen.SetStyle(defStyle);
-
+	var w,h = screen.Size();
 	snakeBody := SnakeBody{
 		X:      5,
 		Y:      10,
@@ -29,6 +29,8 @@ func main()  {
 	game := Game{
 		Screen:    screen,
 		snakeBody: snakeBody,
+		width: w,
+		height: h,
 	}
 
 	go game.Run();
@@ -37,6 +39,9 @@ func main()  {
 		switch event:= game.Screen.PollEvent().(type){
 		case *tcell.EventResize:
 			game.Screen.Sync()
+			wn,hn := event.Size()
+			game.width= wn;
+			game.height= hn;
 		case *tcell.EventKey:
 			if event.Key() == tcell.KeyCtrlC || event.Key() == tcell.KeyEscape {
 				game.Screen.Fini()

@@ -9,13 +9,13 @@ func (sb *SnakeBody) ChangeDir(horizontal int, vertical int) {
 	sb.Xspeed = horizontal;
 	sb.Yspeed = vertical;
 }
-func (sb *SnakeBody) Update(width int, height int) {
-	sb.X = (sb.X + sb.Xspeed) % width;
-	if sb.X < 0 {
-		sb.X = sb.X + width;
+func (g *Game) Update() {
+	g.snakeBody.X = (g.snakeBody.X + g.snakeBody.Xspeed) % g.width;
+	if g.snakeBody.X < 0 {
+		g.snakeBody.X = g.snakeBody.X + g.width;
 	}
-	sb.Y = (sb.Y + sb.Yspeed) % height;
-	if sb.Y < 0 {
-		sb.Y = sb.Y + height;
+	g.snakeBody.Y = (g.snakeBody.Y + g.snakeBody.Yspeed) % g.height;
+	if g.snakeBody.Y < 0 {
+		g.snakeBody.Y = g.snakeBody.Y + g.height;
 	}
 }
