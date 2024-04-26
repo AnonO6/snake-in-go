@@ -8,19 +8,29 @@ import (
 type Game struct{
 	Screen	tcell.Screen
 	snakeBody	SnakeBody
+	food	Food
 	width	int
 	height	int
+	style	Style
 };
+type Style struct{
+	defStyle	tcell.Style
+	snakeStyle	tcell.Style
+	foodStyle	tcell.Style
+}
 func (g *Game) Run() {
-	defStyle:= tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite);
-	g.Screen.SetStyle(defStyle);
-	snakeStyle:= tcell.StyleDefault.Background(tcell.ColorWhite).Foreground(tcell.ColorWhite);
-
+	
+	g.Screen.SetStyle(g.style.defStyle);
 	for{
 		g.Screen.Clear();
-		g.Update();
-		g.Screen.SetContent(g.snakeBody.X, g.snakeBody.Y, ' ', nil, snakeStyle);
-		time.Sleep(40 *time.Millisecond);
+		g.GenSnake();
+		g.Screen.SetContent(g.food.X, g.food.Y, '*', nil, g.style.foodStyle );
+		if g.HasEaten() {
+			g.Eat();
+			g.snakeBody.Grow();
+			g.food.GenFood(g.width, g.height);
+		}
+		time.Sleep(80 *time.Millisecond);
 		g.Screen.Show();
 	}
 }

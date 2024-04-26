@@ -24,13 +24,24 @@ func main()  {
 		Y:      10,
 		Xspeed: 1,
 		Yspeed: 0,
+		Body:	1,
 	}
-
+	food := Food{
+		X: 6,
+		Y: 11,
+	}
+	style:= Style{
+		defStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite),
+		snakeStyle: tcell.StyleDefault.Background(tcell.ColorWhite).Foreground(tcell.ColorWhite),
+		foodStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorOrangeRed),
+	}
 	game := Game{
 		Screen:    screen,
 		snakeBody: snakeBody,
+		food: food,
 		width: w,
 		height: h,
+		style: style,
 	}
 
 	go game.Run();
