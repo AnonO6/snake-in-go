@@ -24,11 +24,13 @@ func (g *Game) Run() {
 	for{
 		g.Screen.Clear();
 		g.GenSnake();
-		g.Screen.SetContent(g.food.X, g.food.Y, '*', nil, g.style.foodStyle );
-		if g.HasEaten() {
-			g.Eat();
+		for i:=0 ; i<3 ; i++{
+			g.Screen.SetContent(g.food.X[i], g.food.Y[i], '*', nil, g.style.foodStyle );
+		}
+		if index:= g.HasEaten(); index != -1 {
+			g.Eat(index);
 			g.snakeBody.Grow();
-			g.food.GenFood(g.width, g.height);
+			g.GenFood(g.width, g.height, index);
 		}
 		time.Sleep(80 *time.Millisecond);
 		g.Screen.Show();

@@ -26,12 +26,12 @@ func main()  {
 		length: 1,
 	}
 	food := Food{
-		X: 6,
-		Y: 11,
+		X: [3]int{6,7,8},
+		Y: [3]int{11,12,13},
 	}
 	style:= Style{
 		defStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite),
-		snakeStyle: tcell.StyleDefault.Background(tcell.ColorWhite).Foreground(tcell.ColorWhite),
+		snakeStyle: tcell.StyleDefault.Background(tcell.ColorLightGreen).Foreground(tcell.ColorLightGreen),
 		foodStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorOrangeRed),
 	}
 	game := Game{

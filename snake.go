@@ -33,7 +33,7 @@ func (g *Game) Update() {
 } 
 func (g *Game) GenSnake(){
 	for i:=0 ; i< g.snakeBody.length; i++ {
-		g.Screen.SetContent(g.snakeBody.Body[i][0], g.snakeBody.Body[i][1], '#' , nil, g.style.snakeStyle);
+		g.Screen.SetContent(g.snakeBody.Body[i][0], g.snakeBody.Body[i][1], ' ' , nil, g.style.snakeStyle);
 	}
 	g.Update();
 }
@@ -53,13 +53,15 @@ func (sb *SnakeBody) Grow(){
 	sb.Enqueue([2]int {posX, posY});
 	sb.length++;
 }
-func (g *Game) HasEaten() bool{
+func (g *Game) HasEaten() int{
 	head:= g.snakeBody.Body[g.snakeBody.length-1]
-	if head[0] == g.food.X && head[1] == g.food.Y{
-		return true;
+	for i:= 0; i<3 ;i++ {
+		if head[0] == g.food.X[i] && head[1] == g.food.Y[i]{
+			return i;
+		}
 	}
-	return false;
+return -1;
 }
-func (g *Game) Eat(){
-	g.Screen.SetContent(g.food.X, g.food.Y, ' ', nil, g.style.defStyle )
+func (g *Game) Eat(index int){
+	g.Screen.SetContent(g.food.X[index], g.food.Y[index], ' ', nil, g.style.defStyle )
 }

@@ -2,10 +2,10 @@ package main
 
 import "math/rand"
 type Food struct{
-	X	int
-	Y	int
+	X	[3]int
+	Y	[3]int
 }
-func (food *Food) GenFood(width int, height int){
-	food.X = rand.Intn(width-1)
-	food.Y = rand.Intn(height-1)
+func (g *Game) GenFood(width int, height int, index int){
+		g.food.X[index] = rand.Intn(width-1)
+		g.food.Y[index] = rand.Intn(height-1)
 }
