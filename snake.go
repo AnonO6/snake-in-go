@@ -18,7 +18,8 @@ func (sb *SnakeBody) ChangeDir(horizontal int, vertical int) {
 	sb.Yspeed = vertical;
 }
 func (g *Game) Update() {
-	head:= g.snakeBody.Body[g.snakeBody.length-1]
+	length:= g.snakeBody.length;
+	head:= g.snakeBody.Body[length-1]
 	X:= head[0]
 	Y:= head[1]
 
@@ -66,4 +67,13 @@ return -1;
 }
 func (g *Game) Eat(index int){
 	g.Screen.SetContent(g.food.X[index], g.food.Y[index], ' ', nil, g.style.defStyle )
+}
+func (g *Game) checkCollision(head [2]int) bool{
+	length:= g.snakeBody.length;
+	for i:=1 ; i<length-2 ; i++ {
+		if head[0] == g.snakeBody.Body[i][0] && head[1] == g.snakeBody.Body[i][1]{
+			return true
+		}
+	}
+	return false
 }

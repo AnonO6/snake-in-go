@@ -34,7 +34,12 @@ func (g *Game) Run() {
 			g.snakeBody.Grow();
 			g.GenFood(g.width, g.height, index);
 		}
-		time.Sleep(80 *time.Millisecond);
+		time.Sleep(160 *time.Millisecond);
+		if g.checkCollision(g.snakeBody.Body[g.snakeBody.length-1]){
+			break;
+		}
 		g.Screen.Show();
 	}
+	g.GameOver();
+	g.Screen.Show();
 }

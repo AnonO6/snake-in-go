@@ -10,6 +10,9 @@ func (g *Game) Score (){
 
 	drawText(g.Screen, 1, 1, g.width, g.height, text);
 }
+func (g *Game) GameOver (){
+	drawText(g.Screen, g.width/2, g.height/2,g.width, g.height, "GAME OVER");
+}
 func drawText(s tcell.Screen, x1, y1, x2, y2 int, text string) {
 	row := y1
 	col := x1
