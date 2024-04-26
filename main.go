@@ -31,8 +31,9 @@ func main()  {
 	}
 	style:= Style{
 		defStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite),
-		snakeStyle: tcell.StyleDefault.Background(tcell.ColorLightGreen).Foreground(tcell.ColorLightGreen),
+		snakeStyle: tcell.StyleDefault.Background(tcell.ColorLightGreen).Foreground(tcell.ColorLemonChiffon),
 		foodStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorOrangeRed),
+		scoreStyle: tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite),
 	}
 	game := Game{
 		Screen:    screen,

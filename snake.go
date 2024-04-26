@@ -1,4 +1,6 @@
 package main
+
+import "github.com/gdamore/tcell"
 type SnakeBody struct{
 	Xspeed	int
 	Yspeed	int
@@ -33,7 +35,7 @@ func (g *Game) Update() {
 } 
 func (g *Game) GenSnake(){
 	for i:=0 ; i< g.snakeBody.length; i++ {
-		g.Screen.SetContent(g.snakeBody.Body[i][0], g.snakeBody.Body[i][1], ' ' , nil, g.style.snakeStyle);
+		g.Screen.SetContent(g.snakeBody.Body[i][0], g.snakeBody.Body[i][1], tcell.RuneCkBoard , nil, g.style.snakeStyle);
 	}
 	g.Update();
 }

@@ -17,15 +17,17 @@ type Style struct{
 	defStyle	tcell.Style
 	snakeStyle	tcell.Style
 	foodStyle	tcell.Style
+	scoreStyle	tcell.Style
 }
 func (g *Game) Run() {
 	
 	g.Screen.SetStyle(g.style.defStyle);
 	for{
 		g.Screen.Clear();
+		g.Score();
 		g.GenSnake();
 		for i:=0 ; i<3 ; i++{
-			g.Screen.SetContent(g.food.X[i], g.food.Y[i], '*', nil, g.style.foodStyle );
+			g.Screen.SetContent(g.food.X[i], g.food.Y[i], '\u25CF', nil, g.style.foodStyle );
 		}
 		if index:= g.HasEaten(); index != -1 {
 			g.Eat(index);
