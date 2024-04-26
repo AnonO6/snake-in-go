@@ -20,11 +20,10 @@ func main()  {
 	screen.SetStyle(defStyle);
 	var w,h = screen.Size();
 	snakeBody := SnakeBody{
-		X:      5,
-		Y:      10,
 		Xspeed: 1,
 		Yspeed: 0,
-		Body:	1,
+		Body: [][2]int{{5,10},},
+		length: 1,
 	}
 	food := Food{
 		X: 6,
@@ -43,7 +42,6 @@ func main()  {
 		height: h,
 		style: style,
 	}
-
 	go game.Run();
 
 	for{
